@@ -8,9 +8,9 @@
 .env.*.local
 *.env
 !.env.example
+!Project/.env.example
 
-# --- Model Checkpoints & Weights ---
-# Do not upload large model weights to GitHub
+# --- Model Checkpoints & Large Weights ---
 *.pt
 *.pth
 *.onnx
@@ -22,35 +22,41 @@ models/
 weights/
 checkpoints/
 yolo11n.pt
+Project/yolo11n.pt
 
 # --- Datasets & Training Artifacts ---
 /runs/
 /datasets/
 /data/
 /ImageSets/
-!backend/app/data/
+!Project/backend/app/data/
 
 # --- Uploads & Runtime Storage ---
-# Preserve upload directory structure via .gitkeep while ignoring uploaded files
-/uploads/
-backend/uploads/*
-!backend/uploads/.gitkeep
-!backend/uploads/images/
-backend/uploads/images/*
-!backend/uploads/images/.gitkeep
-!backend/uploads/annotated/
-backend/uploads/annotated/*
-!backend/uploads/annotated/.gitkeep
+uploads/
+**/uploads/*
+!**/uploads/.gitkeep
+!**/uploads/images/
+**/uploads/images/*
+!**/uploads/images/.gitkeep
+!**/uploads/annotated/
+**/uploads/annotated/*
+!**/uploads/annotated/.gitkeep
+**/uploads/*.json
 *.tmp
 *.log
 
 # --- Python & Virtual Environments ---
-backend/.venv/
 .venv/
+*/.venv/
+backend/.venv/
+Project/backend/.venv/
 venv/
 ENV/
 env/
 __pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
 *.py[cod]
 *$py.class
 *.so
@@ -71,23 +77,28 @@ wheels/
 .installed.cfg
 *.egg
 .pytest_cache/
+*/.pytest_cache/
 .coverage
 htmlcov/
 .tox/
 .nox/
 
-# --- Node.js & Frontend Artifacts ---
-frontend/node_modules/
+# --- Node.js & Frontend Build Outputs ---
 node_modules/
-frontend/dist/
+*/node_modules/
+frontend/node_modules/
+Project/frontend/node_modules/
 dist/
+*/dist/
+frontend/dist/
+Project/frontend/dist/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 *.tsbuildinfo
 
-# --- IDE & Operating System Artifacts ---
+# --- OS & Editor Artifacts ---
 .vscode/
 .idea/
 *.sublime-project
